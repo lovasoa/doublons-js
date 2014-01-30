@@ -7,6 +7,9 @@
   "window": {
     "title": "Doublons",
     "icon": "doublons.png",
-    "toolbar": true
+    "toolbar": false
+  },
+  "dependencies" : {
+  	"walk":">0"
   }
 }
