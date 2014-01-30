@@ -11,6 +11,7 @@
     "width" : 900
   },
   "dependencies" : {
-  	"walk":">0"
+  	"walk":">0",
+  	"open":">=0.0.4"
   }
 }

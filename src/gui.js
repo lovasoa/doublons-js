@@ -1,6 +1,14 @@
 var gui={};
 
 (function() {
+	try {
+		var open = require("open");
+	} catch(e) {
+		var open = function(path) {
+			window.open("file://"+path);
+		}
+	}
+
 	var state = document.getElementById("state"),
 		statemsg = document.getElementById("statemsg"),
 		progress = document.getElementById("progress"),
@@ -42,6 +50,11 @@ var gui={};
 			var pathElem = document.createTextNode(files[i].dirname+"/");
 			var fileNameElem = document.createElement("b");
 			var sizeElem = document.createElement("i");
+			fileNameElem.dataset["filepath"] = files[i].filepath;
+			fileNameElem.addEventListener("click",function(e) {
+				var path = e.target.dataset["filepath"];
+				open(path);
+			}, true);
 			fileNameElem.textContent = files[i].stats.name;
 			sizeElem.textContent = readableSize(files[i].stats.size);
 			cell.appendChild(pathElem);
