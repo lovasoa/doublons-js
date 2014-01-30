@@ -87,9 +87,7 @@ function processFiles () {
 			}
 		}
 	}
-
-	//End of the process
-	self.close();
+	end();
 }
 
 
@@ -117,6 +115,12 @@ function log(msg) {
 		"cmd" : "log",
 		"msg" : msg
 	});
+}
+function end () {
+	self.postMessage({
+		"cmd" : "end"
+	});
+	self.close();
 }
 
 self.addEventListener("message", function (e) {

@@ -29,6 +29,7 @@ function File (root, fileStats) {
 
 function analyze_dir (dir) {
 	var worker = new Worker("doublons-compute-worker.js");
+	var ndoublets = 0;
 	worker.onmessage = function (e) {
 		var data = e.data;
 		switch (data.cmd) {
@@ -39,9 +40,16 @@ function analyze_dir (dir) {
 				gui.set_statemsg(data.msg);
 				break;
 			case "collision_found":
-				gui.init_display_collisions();
+				if (ndoublets == 0) gui.init_display_collisions();
+				ndoublets ++;
 				gui.display_collision(data.files, data.dist);
 				break;
+			case "end":
+				if (ndoublets === 0) {
+					gui.set_statemsg("No collision found");
+				} else {
+					gui.all_collisions_displayed(ndoublets);
+				}
 			case "log":
 				console.log(data.msg);
 				break;
