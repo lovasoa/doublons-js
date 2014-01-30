@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>Doublons</title>
+	<link rel="stylesheet" href="gui.css"/>
+</head>
+
+<body>
+<main>
+<h1>Doublons</h1>
+<div id="controls">
+	<div id="state" class="hidden" >
+		<progress id="progress"></progress>
+		<p id="statemsg">Initialization</p>
+	</div>
+
+	<button id="pickdir">Pick a directory</button>
+</div>
+
+<table class="hidden" id="collisions_table">
+   <caption>Similar file names</caption>
+   <thead>
+      <tr>
+         <th>File 1</th>
+         <th>File 2</th>
+         <th>dist</th>
+      </tr>
+   </thead>
+   <tbody>
+   </tbody>
+</table>
+</main>
+
+<script src="gui.js"></script>
+<script src="doublons.js"></script>
+</body>
+</html>

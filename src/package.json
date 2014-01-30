@@ -1,0 +1,12 @@
+{
+  "main": "index.html",
+  "name": "doublons",
+  "description": "Find duplicates by name",
+  "version": "0.0.1",
+  "keywords": [ "doublons", "duplicate" ],
+  "window": {
+    "title": "Doublons",
+    "icon": "doublons.png",
+    "toolbar": true
+  }
+}

@@ -1,0 +1,101 @@
+body {
+	background-color:#001F3F;
+	margin:0;
+	padding:0;
+}
+
+main {
+	width:90%;
+	margin:0 auto 0;
+	background:linear-gradient(#fff,#bbb);
+	box-shadow: 0 0 15px white;
+	overflow:auto;
+}
+
+h1 {
+	text-align:center;
+}
+
+#collisions_table {
+	width:100%;
+	table-layout:fixed;
+	border-collapse:collapse;
+}
+#collisions_table.hidden {
+	display:none;
+}
+#collisions_table thead th {
+	height:30px;
+	background:linear-gradient(#4fdd50,#2ecc40);
+}
+#collisions_table tbody {
+	font-size:0.7em;
+}
+#collisions_table tbdody tr:nth-child(odd) {
+	background-color:#fff;
+}
+#collisions_table tbody tr:nth-child(even) {
+	background-color:#ddd;
+}
+#collisions_table tbody tr:hover {
+	background-color:#4fdd50;
+	transition:.5s;
+}
+#collisions_table th:nth-child(3){
+	width:45px;
+}
+#collisions_table td {
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+#collisions_table b{
+	font-size:1.5em;
+	display:block;
+}
+
+#controls {
+	width:100%;
+	margin:0;
+}
+
+#state {
+	width:50%;
+	margin:20px auto;
+	background:linear-gradient(#7FDBFF,#39CCCC);
+	padding:10px;
+	border-radius:5px;
+	box-shadow: 0 0 15px #7FDBFF;
+	overflow:hidden;
+	text-overflow:ellipsis;
+}
+
+#state.hidden {
+	display:none;
+}
+
+#state progress {
+	width:100%;
+}
+
+#pickdir {
+	display:block;
+	width:20%;
+	margin:0 auto 30px;
+	background:linear-gradient(#4fdd50,#2ecc40);
+	border-radius:3px;
+	padding:15px 5px;
+	border:1px solid #4fdd50;
+	box-shadow: 0 0 5px #4fdd50;
+	font-weight:bold;
+	letter-spacing:1px;
+	color:black;
+	text-shadow:1px 1px 4px grey;
+	font-size:16px;
+}
+
+@media (max-width:1000px) {
+	main {
+		width:100%;
+	}
+}
