@@ -3,6 +3,7 @@ var gui={};
 (function() {
 	try {
 		var open = require("open");
+		var fs = require("fs");
 	} catch(e) {
 		var open = function(path) {
 			window.open("file://"+path);
@@ -20,6 +21,7 @@ var gui={};
 		fc.type = "file";
 		fc.value = "";
 		fc.nwdirectory = true;
+		fc.multiple = true;
 		state.classList.remove("hidden");
 		fc.onchange = function() {
 			analyze_dir(fc.value);
@@ -50,16 +52,32 @@ var gui={};
 			var pathElem = document.createTextNode(files[i].dirname+"/");
 			var fileNameElem = document.createElement("b");
 			var sizeElem = document.createElement("i");
-			fileNameElem.dataset["filepath"] = files[i].filepath;
+			var deleteBtn = document.createElement("button");
+			cell.dataset["filepath"] = files[i].filepath;
 			fileNameElem.addEventListener("click",function(e) {
-				var path = e.target.dataset["filepath"];
+				var path = e.target.parentElement.dataset["filepath"];
 				open(path);
 			}, true);
 			fileNameElem.textContent = files[i].stats.name;
+			deleteBtn.textContent = "delete";
+			deleteBtn.addEventListener("click",function(e) {
+				var path = e.target.parentElement.dataset["filepath"];
+				if (confirm("Delete "+path+"?")) {
+					fs.unlink(path, function (err) {
+						if (err) {
+							alert("Unable to delete "+path);
+						} else {
+							var row = e.target.parentElement.parentElement;
+							row.parentElement.removeChild(row);
+						}
+					});
+				}
+			}, true);
 			sizeElem.textContent = readableSize(files[i].stats.size);
 			cell.appendChild(pathElem);
 			cell.appendChild(fileNameElem);
 			cell.appendChild(sizeElem);
+			cell.appendChild(deleteBtn);
 		}
 		cell = row.insertCell(2);
 		cell.textContent = dist;
